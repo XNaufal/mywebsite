@@ -3,21 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Store</title>
+    <title>Toko Mammiri</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background-color: #084eaa;
+        }
+        .navbar a {
+            color: #ffffff;
+            padding: 14px 20px;
+        }
+        .navbar a:hover {
+            background-color: #084eaa;
+            color: #084eaa;
+        }
+        .judul {
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 0px;
+            background-color: #084eaa;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .card-title,
+        .card-text {
+            color: #084eaa;
+        }
+        .alamat {
+            color: #084eaa;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .footer {
+            padding: 20px 0;
+            text-align: center;
+            background-color: #084eaa;
+        }
+        .footer p {
+            color: #ffffff;
+        }
+        .menu a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+        .btn-outline-success {
+            color: #084eaa;
+            border-color: #084eaa;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to our store!</h1>
-    <ul>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#" style="color: #ffffff; font-weight: bold; font-size: 30px;">Toko Mammiri</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: #ffffff; font-weight: bold; font-size: 20px;">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#detail" style="color: #ffffff; font-weight: bold; font-size: 20px;">Detail</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#keranjang" style="color: #ffffff; font-weight: bold; font-size: 20px;">Keranjang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#checkout" style="color: #ffffff; font-weight: bold; font-size: 20px;">Checkout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#kontak" style="color: #ffffff; font-weight: bold; font-size: 20px;">Kontak</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container mt-4">
+    <h1 class="judul mb-4">Selamat datang di Toko Mammiri!</h1>
+
+    <!-- Tambahkan gambar di sini -->
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <img src="/media/banner_images/Banner.webp" alt="Gambar Selamat Datang" style="width: 100%; max-width: 100%;" />
+        </div>
+    </div>    
+
+    <div class="row">
+        <!-- Loop produk dimulai -->
         {% for product in products %}
-            <li>
-                <h2>{{ product.name }}</h2>
-                <p>Category: {{ product.category }}</p>
-                <p>Price: ${{ product.price }}</p>
-                <a href="{% url 'product_detail' product_id=product.id %}">View Details</a>
-                <!-- Tambahkan detail lainnya sesuai kebutuhan -->
-            </li>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow">
+                <img class="card-img-top" src="{{ product.image.url }}" alt="Product Image">
+                <div class="card-body">
+                    <h2 class="card-title">{{ product.name }}</h2>
+                    <p class="card-text">Kategori: {{ product.category }}</p>
+                    <p class="card-text">Harga: Rp{{ product.price }}</p>
+                    <div class="text-left">
+                        <a href="{% url 'product_detail' product_id=product.id %}" class="btn btn-sm btn-outline-success">Lihat Detail</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         {% endfor %}
-    </ul>
-    
+        <!-- Loop produk selesai -->
+    </div>
+
+    <!-- Tambahkan gambar di sini -->
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <img src="/media/banner_images/Banner.webp" alt="Gambar Selamat Datang" style="width: 100%; max-width: 100%;" />
+        </div>
+    </div>    
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="judul mb-0">Lokasi Toko Mammiri</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.2997736032275!2d119.38929247482109!3d-5.21551189476217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbf1d8fa4f02ff5%3A0x1faecbc071d9f4b5!2sMarkisa%20Mammiri%20-%20Produk%20Khas%20Asli%20Makassar!5e0!3m2!1sid!2sid!4v1714446607712!5m2!1sid!2sid" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div class="col-md-6">
+            <h2 class="judul mb-0">Video Produksi Markisa</h2>
+            <iframe width="100%" height="300" src="https://www.youtube.com/embed/pnwOGn5TTMo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+
+<footer class="footer mt-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="float-left">&copy; 2024 Toko Mammiri. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-right">
+                <nav class="menu">
+                    <a href="#">Home</a>
+                    <a href="#detail">Detail</a>
+                    <a href="#keranjang">Keranjang</a>
+                    <a href="#checkout">Checkout</a>
+                    <a href="#kontak">Kontak</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>
